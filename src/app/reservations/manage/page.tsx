@@ -1,3 +1,3 @@
 export default function ManageReservations() {
-  return <div>Manage Your Reservation</div>;
+  return <div className="text-center text-lg">Manage Your Reservation</div>;
 }
