@@ -4,9 +4,16 @@ import { DatePicker } from "@mui/x-date-pickers";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Select, MenuItem } from "@mui/material";
+import { Dayjs } from "dayjs";
 
-export default function LocationDateReserve() {
-  const [reserveDate, setReserveDate] = useState(null);
+export default function LocationDateReserve({
+  onDateChange,
+  onLocationChange,
+}: {
+  onDateChange: Function;
+  onLocationChange: Function;
+}) {
+  const [reserveDate, setReserveDate] = useState<Dayjs | null>(null);
   const [location, setLocation] = useState("BKK");
 
   return (
@@ -15,7 +22,9 @@ export default function LocationDateReserve() {
         <DatePicker
           className="bg-white"
           value={reserveDate}
-          onChange={(value) => setReserveDate(value)}
+          onChange={(value) => {
+            setReserveDate(value), onDateChange(value);
+          }}
         />
       </LocalizationProvider>
       <Select
@@ -24,7 +33,9 @@ export default function LocationDateReserve() {
         id="location"
         className="h-[2em] w-[200px]"
         value={location}
-        onChange={(e) => setLocation(e.target.value)}
+        onChange={(e) => {
+          setLocation(e.target.value), onLocationChange(e.target.value);
+        }}
       >
         <MenuItem value="BKK">Bangkok</MenuItem>
         <MenuItem value="CNX">Chiang Mai</MenuItem>
