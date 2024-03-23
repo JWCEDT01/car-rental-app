@@ -6,10 +6,9 @@ import { useDispatch } from "react-redux";
 export default function ReservationCart() {
   const carItems = useAppSelector((state) => state.cartSlice.carItems);
   const dispatch = useDispatch<AppDispatch>();
-  console.log(carItems);
   return (
     <>
-      {carItems.map((reservationItem) => {
+      {carItems.map((reservationItem) => (
         <div
           className="bg-slate-200 rounded px-5 mx-5 py-2 my-2"
           key={reservationItem.carId}
@@ -33,8 +32,8 @@ export default function ReservationCart() {
           >
             Remove from Cart
           </button>
-        </div>;
-      })}
+        </div>
+      ))}
     </>
   );
 }
