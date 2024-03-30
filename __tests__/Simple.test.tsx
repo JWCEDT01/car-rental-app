@@ -54,5 +54,3 @@ describe("Banner", () => {
     }
   });
 });
-
-// test
